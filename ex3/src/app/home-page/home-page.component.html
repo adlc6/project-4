@@ -1,0 +1,37 @@
+<div class="container text-center">
+    <h1 class="p-2">
+        Transactions
+    </h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">AMOUNT</th>
+                <th scope="col">BALANCE</th>
+                <th scope="col">LABEL</th>
+                <th scope="col">DATE</th>
+                <th scope="col">Sort:
+                    <select [(ngModel)] = 'Sortby'>
+                        <option value="id">ID</option>
+                        <option value="amount">Amount</option>
+                        <option value="balance">Balance</option>
+                        <option value="label">Label</option>
+                        <option value="date">Date</option>
+                    </select>
+                </th>
+            </tr>
+        </thead>
+    
+        <tbody *ngFor="let datos of listTransactions | sort: Sortby" >
+            <td> {{datos.id}} </td>
+            <td> {{datos.amount}} </td>
+            <td> {{datos.balance}} </td>
+            <td> {{datos.label}} </td>
+            <td> {{datos.date}} </td>
+            <td> <button type="button" class="btn btn-outline-dark" [routerLink]="['/',datos?.id]">Show All</button> </td>
+        </tbody>
+    
+    </table>
+
+</div>
+
